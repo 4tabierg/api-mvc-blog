@@ -1,0 +1,43 @@
+﻿@model Tuple<PostViewModel, UserViewModel>
+@{
+    ViewData["Title"] = "Post";
+}
+
+<section class="main-content p-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mr-50">
+                <div class="single-page-content">
+                    <div class="standard-post">
+                        <div class="blog-item">
+                            <div class="blog-info">
+                                <ul class="meta">
+                                    <li>@Model.Item1.CreatedDate</li>
+                                    <li><i class="la la-eye"></i>@Model.Item1.ViewCount</li>
+                                </ul>
+                                <h3 class="post-title">@Model.Item1.Title</h3>
+                            </div>
+                            <div class="blog-img">
+                                <img src="@Model.Item1.ImagePath" alt="" />
+                            </div>
+                            @Html.Raw(Model.Item1.PostDetail)
+                            <div class="post-author-info">
+                                <div class="author-img">
+                                    <img src="@Model.Item2.ImageUrl" alt="" />
+                                    <div class="author-info">
+                                        <h3>
+                                            <a href="#" title="">@Model.Item2.FirstName @Model.Item2.LastName </a>
+                                        </h3>
+                                        <p>@Model.Item2.FirstName @Model.Item2.LastName isimli yazarımız @Model.Item2.CreatedDate tarihinde aramıza katılmıştır.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @await Component.InvokeAsync("Recommended")
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
